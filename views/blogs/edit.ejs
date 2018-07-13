@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= blog.title %></div>
+    <form class="ui form" action="/blogs/<%= blog._id %>?_method=PUT" method="POST"> <!-- method=PUT is method-override! HTML does (still) not support PUT etc so we have to do this -->
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="blog[title]" value="<%= blog.title %>">
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <input type="text" name="blog[image]" value="<%= blog.image %>">
+        </div>
+        <div class="field">
+            <label>Blog Content</label>
+            <textarea name="blog[body]"><%= blog.body %></textarea>
+        </div>
+        <input class="ui primary button" type="submit" value="Submit">
+        <div class="extra">
+            <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">
+                <i class="left chevron icon"></i>Go back
+            </a>
+        </div>
+    </form>
+</div>
+
+<br>
+
+<% include ../partials/footer %>

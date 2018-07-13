@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment"> <!-- segment is for the line around the post -->
+    <div class="ui huge header"><%= blog.title %></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= blog.image %>">
+            <div class="description">
+                <br>
+                <div>
+                    <span class="postUsername"><%= blog.author.username %></span>
+                    <span class="postDate"> on <%= blog.created.toDateString() %></span> <!-- toDateString() to change the way date is displayed-->
+                </div>
+                <br>
+                <p><%- blog.body %></p> <!-- this will run/evaluate the code, see notes -->
+            </div>
+        </div>
+        <br>
+        <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+            <a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+            <button class="ui red basic button">Delete</button>
+            <div class="extra">
+                <a class="ui floated secondary button" href="/blogs/">
+                    <i class="left chevron icon"></i>Go back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+
+<% include ../partials/footer %>

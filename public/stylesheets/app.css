@@ -1,0 +1,75 @@
+body {
+    text-align: justify;
+    font-size: 1em;
+    background-color: #f6f6f6;
+}
+
+.header {
+    text-align: left;
+}
+
+i.icon {
+    font-size: inherit;
+}
+
+.container.main {
+    margin-top: 7.0em;
+}
+
+div.extra {
+    float: right;
+    text-align: right;
+}
+
+.postUsername {
+    font-style: italic;
+}
+
+.postDate {
+    color: rgba(0, 0, 0, 0.6);
+    font-style: italic;
+}
+
+.flashMessageWrapper {
+    position: absolute;
+    top: 3.0em;
+    z-index: 1;
+    width: 100%;
+}
+
+.flashMessageWrapperError, .flashMessageWrapperSuccess {
+
+}
+
+.flashMessage {
+    padding-top: 3.5em;
+    text-align: center;
+}
+
+#loginMenu {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    padding-right: 5%;
+} 
+
+#userOptions {
+    height: 100%;
+}
+
+#delete {
+    display: inline;
+}
+
+#signIn {
+    float: right;
+}
+
+#navbar {
+    height: 3.8em;
+    padding-left: 5%;
+}
+
+#userIcon {
+    color: #2185d0;
+}

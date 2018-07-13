@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Register</div>
+    <form class="ui form" action="/register" method="POST">
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="username">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password">
+        </div>
+        <input class="ui primary button" type="submit" value="Submit">
+        <div class="extra">
+            <a class="ui floated secondary button" href="/blogs">
+                <i class="left chevron icon"></i>Go back
+            </a>
+        </div>
+    </form>
+
+<% include ./partials/footer %>

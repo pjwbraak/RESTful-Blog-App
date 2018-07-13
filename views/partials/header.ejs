@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog App</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"
+              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+              crossorigin="anonymous">
+        </script>
+        <script type="text/javascript" src="/scripts/app.js"></script>
+    </head>
+    <body>
+    <div class="ui fixed inverted menu" id="navbar">
+        <div class="ui container">
+          <a class="header item">
+            Project Name
+          </a>
+          <a href="/blogs" class="item">Blogs</a>
+          <div class="ui simple dropdown item">
+            Dropdown <i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="item" href="#">Link Item</a>
+              <a class="item" href="#">Link Item</a>
+              <div class="divider"></div>
+              <div class="header">Header Item</div>
+              <div class="item">
+                <i class="dropdown icon"></i>
+                Sub Menu
+                <div class="menu">
+                  <a class="item" href="#">Link Item</a>
+                  <a class="item" href="#">Link Item</a>
+                </div>
+              </div>
+              <a class="item" href="#">Link Item</a>
+            </div>
+          </div>
+        </div>
+        <div class="ui container">
+            <div class="ui inverted menu" id="loginMenu">
+                <% if(!currentUser){ %>
+                    <a href="/login" class="item" id="signIn">
+                    <i class="sign in alternate icon"></i>Login</a>
+                    <a href="/register" class="item" id="register">Register</a>
+                <% } else { %>
+                    <a>
+                        <div class="ui simple dropdown item" id="userOptions">
+                            <i class="user icon" id="userIcon"></i>
+                            <%=currentUser.username %>
+                            <i class="dropdown icon"></i>
+                    </a>
+                            <div class="menu">
+                              <a class="item" href="#">Link Item</a>
+                              <a class="item" href="#">Profile</a>
+                              <div class="divider"></div>
+                              <a href="/logout" class="item" href="#">Logout</a>
+                            </div>
+                        </div>
+                  <% } %>
+              </div>
+        </div>
+    </div>
+        <% if(error && error.length > 0){ %> <!-- need to add the error.length part because error is not undefined, so check if its greater than 0. Even if error is empty, it's still an empty array and therefore error = not falsey. -->
+            <div class="flashMessageWrapper flashMessageWrapperError">
+                <div class="flashMessage ui container">
+                    <div class="ui compact warning message">
+                        <%= error %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="flashMessageWrapper flashMessageWrapperSuccess">
+                <div class="flashMessage ui container">
+                    <div class="ui compact positive message">
+                        <%= success %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
