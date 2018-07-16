@@ -50,8 +50,8 @@
                             <i class="dropdown icon"></i>
                     </a>
                             <div class="menu">
-                              <a class="item" href="#">Link Item</a>
-                              <a class="item" href="#">Profile</a>
+                              <a class="item" href="#">My Blogs</a>
+                              <a class="item" href="/users/<%=currentUser._id%>/private">Profile</a>
                               <div class="divider"></div>
                               <a href="/logout" class="item" href="#">Logout</a>
                             </div>
@@ -60,7 +60,7 @@
               </div>
         </div>
     </div>
-        <% if(error && error.length > 0){ %> <!-- need to add the error.length part because error is not undefined, so check if its greater than 0. Even if error is empty, it's still an empty array and therefore error = not falsey. -->
+        <% if(error && error.length > 0){ %>
             <div class="flashMessageWrapper flashMessageWrapperError">
                 <div class="flashMessage ui container">
                     <div class="ui compact warning message">

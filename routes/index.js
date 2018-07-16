@@ -14,10 +14,12 @@ router.get("/register", function(req, res){
 
 //handle signup logic
 router.post("/register", function(req, res){
-   var newUser = new User({username: req.body.username}); //for readability
-   User.register(newUser, req.body.password, function(err, user){ //User.register provided by the mongoose-local package.
+   var newUser = new User   ({  username: req.body.username,
+                                email: req.body.email
+                            });
+   User.register(newUser, req.body.password, function(err, user){
       if(err){
-           return res.render("register", {"error": err.message}); // see lecture note 324
+           return res.render("register", {"error": err.message});
       } else {
           passport.authenticate("local")(req, res, function(){
               req.flash("success", "Welcome " + user.username + ", your account was successfully registered!");

@@ -4,10 +4,10 @@
     <div class="ui huge header">RESTful Blog App</div>
     <div class="ui top attached segment">
         <div class="ui divided items">
-            <% blogs.reverse(); %> <!-- reverse so newest posts are up top -->
+            <% blogs.reverse(); %>
             <% blogs.forEach(function(blog){ %>
                 <div class="item">
-                    <div class="image"> <!-- this will help with the gigantic images, will be contrained -->
+                    <div class="image">
                         <img src="<%= blog.image %>">
                     </div>
                     <div class="content">
@@ -16,7 +16,7 @@
                             <span><%= blog.created.toDateString() %></span>
                         </div>
                         <div class="description">
-                            <p><%- blog.body.substring(0, 100) %>...</p> <!-- shows first 100 chars of blog post (with HTML content!-->
+                            <p><%- blog.body.substring(0, 100) %>...</p>
                         </div>
                         <div class="extra">
                             <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">

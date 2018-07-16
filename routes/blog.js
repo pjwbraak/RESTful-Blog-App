@@ -42,13 +42,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 });
 
 //READ or SHOW - show a blog
-router.get("/:id", function(req, res){ //req.params.id refers to the /blogs/id that is sent back
+router.get("/:id", function(req, res){
    Blog.findById(req.params.id, function(err, foundBlog){
        if(err){
            console.log(err);
            res.redirect("/");
        } else {
-           res.render("./blogs/show", {blog:foundBlog}); //{variable that will be passed onto show template:data that is put into that variable}
+           res.render("./blogs/show", {blog:foundBlog});
        }
    });
 });
@@ -68,12 +68,12 @@ router.get("/:id/edit", function (req, res){
 //UPDATE ROUTE - update blog post to reflect the changes made to the blog post
 router.put("/:id", function(req, res){
      req.body.blog.body = req.sanitize(req.body.blog.body);
-     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){ //req.body.blog takes the info from blog on the edit page
+     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
         if(err){
             console.log(err);
             res.redirect("/");
         } else {
-            res.redirect("/" + req.params.id); //redirect to show page of blog post
+            res.redirect("/" + req.params.id);
         }
    });
 });

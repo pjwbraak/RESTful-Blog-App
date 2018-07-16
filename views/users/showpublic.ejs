@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment"> <!-- segment is for the line around the post -->
+    <div class="ui huge header"><%= user.username %></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="">
+            <div class="description">
+                <br>
+                <div>
+                    <span class="postUsername"><%= user.username %></span>
+                </div>
+                <br>
+                <p><%- user.email %></p> <!-- this will run/evaluate the code, see notes -->
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+<br>
+
+<% include ../partials/footer %>
