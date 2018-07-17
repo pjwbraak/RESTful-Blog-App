@@ -1,33 +1,37 @@
 <% include ../partials/header %>
 
 <div class="ui main text container">
-    <div class="ui huge header">Blogs by <%= user.username %></div>
     <div class="ui top attached segment">
-        <div class="ui divided items">
-            <% blogs.reverse(); %>
-            <% blogs.forEach(function(blog){ %>
-                <div class="item">
-                    <div class="image">
-                        <img src="<%= blog.image %>">
+        <div class="ui huge header">Blogs by <%= user.username %></div>
+        <% if (blogs.length > 0){%>
+            <div class="ui divided items">
+                <% blogs.reverse(); %>
+                <% blogs.forEach(function(blog){ %>
+                    <div class="item">
+                        <div class="image">
+                            <img src="<%= blog.image %>">
+                        </div>
+                        <div class="content">
+                            <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                            <div class="meta">
+                                <span><%= blog.created.toDateString() %></span>
+                            </div>
+                            <div class="description">
+                                <p><%- blog.body.substring(0, 100) %>...</p>
+                            </div>
+                            <div class="extra">
+                                <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">
+                                    Read more
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="content">
-                        <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-                        <div class="meta">
-                            <span><%= blog.created.toDateString() %></span>
-                        </div>
-                        <div class="description">
-                            <p><%- blog.body.substring(0, 100) %>...</p>
-                        </div>
-                        <div class="extra">
-                            <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">
-                                Read more
-                                <i class="right chevron icon"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            <% }); %>
-        </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p class=centered><%= user.username %> has not posted any blogs yet.</p>
+        <% } %>
     </div>
 </div>
 

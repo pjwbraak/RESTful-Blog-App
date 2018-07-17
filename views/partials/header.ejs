@@ -14,14 +14,16 @@
     <div class="ui fixed inverted menu" id="navbar">
         <div class="ui container">
           <a class="header item">
-            Project Name
+            <i class="blogger icon"></i>
+            <span id="headerProjectName">Project Name</span>
           </a>
-          <a href="/blogs" class="item">Blogs</a>
-          <div class="ui simple dropdown item">
+          <a href="/blogs" class="item" id="headerMenuBlog">Blogs</a>
+          <a href="/blogs/new" class="item" id="headerMenuNewBlog">New Blog</a>
+          <div class="ui simple dropdown item" id="headerMenuDropdown">
             Dropdown <i class="dropdown icon"></i>
             <div class="menu">
-              <a class="item" href="#">Link Item</a>
-              <a class="item" href="#">Link Item</a>
+              <a class="item" href="/blogs">Blogs</a>
+              <a class="item" href="/blogs/new">New Blog</a>
               <div class="divider"></div>
               <div class="header">Header Item</div>
               <div class="item">
