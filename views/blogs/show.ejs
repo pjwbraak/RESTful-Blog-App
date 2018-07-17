@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<div class="ui main text container segment"> <!-- segment is for the line around the post -->
+<div class="ui main text container segment">
     <div class="ui huge header"><%= blog.title %></div>
     <div class="ui top attached">
         <div class="item">
@@ -9,7 +9,7 @@
                 <br>
                 <div>
                     <span class="postUsername"><%= blog.author.username %></span>
-                    <span class="postDate"> on <%= blog.created.toDateString() %></span> <!-- toDateString() to change the way date is displayed-->
+                    <span class="postDate"> on <%= blog.created.toDateString() %></span>
                 </div>
                 <br>
                 <p><%- blog.body %></p> <!-- this will run/evaluate the code, see notes -->
