@@ -73,7 +73,7 @@ router.put("/:id", function(req, res){
             console.log(err);
             res.redirect("/");
         } else {
-            res.redirect("/" + req.params.id);
+            res.redirect("/blogs/" + req.params.id);
         }
    });
 });
@@ -91,4 +91,3 @@ router.delete("/:id", middleware.checkBlogOwnership, function(req, res){
 });
 
 module.exports = router;
-

@@ -12,17 +12,26 @@ i.icon {
     font-size: inherit;
 }
 
+.angle.icon.up.addComment {
+    padding-left: 0.35em;
+    display: none;
+}
+
+.dropdown.icon.addComment {
+    padding-left: 0.35em;
+}
+
 .container.main {
     margin-top: 7.0em;
 }
 
-div.extra {
+.extra {
     float: right;
     text-align: right;
 }
 
 .postUsername {
-    font-style: italic;
+    font-weight: bold;
 }
 
 .postDate {
@@ -50,30 +59,26 @@ div.extra {
     text-align: center;
 }
 
+.heightener {
+    height: 2.0em;
+}
+
 /*menu logic for large and smaller screen sizes*/
 
 /*hide for bigger screens*/
-#headerMenuDropdown {
+#headerMenuDropdown, #headerUserMenuDropdown {
     display: none;
 }
 
 @media only screen and (max-width: 768px) {
     
     /*show for smaller screens*/
-    #headerMenuDropdown {
+    #headerMenuDropdown, #headerUserMenuDropdown {
         display: flex;
     }
     
     /*hide for smaller screens*/
-    #headerMenuBlog {
-        display: none;
-    }
-    
-    #headerMenuNewBlog {
-        display: none;
-    }
-    
-    #headerProjectName {
+    #signIn, #register, #headerMenuBlog, #headerMenuNewBlog, #headerProjectName {
         display: none;
     }
     
@@ -109,4 +114,8 @@ div.extra {
 
 #userIcon {
     color: #2185d0;
+}
+
+#addComment {
+    cursor: pointer;
 }

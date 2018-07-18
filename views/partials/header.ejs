@@ -20,7 +20,7 @@
           <a href="/blogs" class="item" id="headerMenuBlog">Blogs</a>
           <a href="/blogs/new" class="item" id="headerMenuNewBlog">New Blog</a>
           <div class="ui simple dropdown item" id="headerMenuDropdown">
-            Dropdown <i class="dropdown icon"></i>
+            Menu <i class="dropdown icon"></i>
             <div class="menu">
               <a class="item" href="/blogs">Blogs</a>
               <a class="item" href="/blogs/new">New Blog</a>
@@ -41,6 +41,13 @@
         <div class="ui container">
             <div class="ui inverted menu" id="loginMenu">
                 <% if(!currentUser){ %>
+                    <div class="ui simple dropdown item" id="headerUserMenuDropdown">
+                        <i class="user outline icon"></i> User <i class="dropdown icon"></i>
+                        <div class="menu">
+                          <a class="item" href="/login">Login</a>
+                          <a class="item" href="/register">Register</a>
+                        </div>
+                    </div>
                     <a href="/login" class="item" id="signIn">
                     <i class="sign in alternate icon"></i>Login</a>
                     <a href="/register" class="item" id="register">Register</a>

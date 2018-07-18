@@ -3,6 +3,7 @@
 <div class="ui main text container">
     <div class="ui huge header">RESTful Blog App</div>
     <div class="ui top attached segment">
+        <% if (blogs.length > 0){%>
         <div class="ui divided items">
             <% blogs.reverse(); %>
             <% blogs.forEach(function(blog){ %>
@@ -28,6 +29,9 @@
                 </div>
             <% }); %>
         </div>
+        <% } else { %>
+            <p class="centered">No blogs to display. <a href="/blogs/new">Get started</a>!</p>
+        <% } %>
     </div>
 </div>
 

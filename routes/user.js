@@ -21,6 +21,18 @@ router.get("/:id/private", middleware.isLoggedIn, function(req, res){
         }
 });
 
+//SHOW - show profile of user (public)
+router.get("/:id", function(req, res){
+       User.findById(req.params.id, function(err, foundUser){
+           if(err){
+               console.log(err);
+               res.redirect("/");
+           } else {
+               res.render("./users/show", {user:foundUser});
+           }
+       });
+});
+
 //show one user's posts
 router.get("/:id/blogs", function(req, res){
        User.findById(req.params.id, function(err, foundUser){

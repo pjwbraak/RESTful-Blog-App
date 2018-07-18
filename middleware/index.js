@@ -1,7 +1,6 @@
 var Blog        = require("../models/blog"),
     middleware  = require("../middleware");
 
-//all the middleware goes here
 var middlewareObj       = {};
 var needToLoginText     = "Please log in to proceed"
 var noPermissionText    = "No permission for action"

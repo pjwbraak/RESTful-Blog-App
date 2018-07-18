@@ -14,6 +14,7 @@ var express                 = require("express"),
     
     indexRoutes             = require("./routes/index"),
     blogRoutes              = require("./routes/blog"),
+    commentRoutes           = require("./routes/comment"),
     userRoutes              = require("./routes/user");
     
 //set up a database
@@ -53,7 +54,9 @@ app.use(function(req, res, next){
 
 app.use("/", indexRoutes);
 app.use("/blogs", blogRoutes);
+app.use("/blogs/:id/comments", commentRoutes);
 app.use("/users", userRoutes);
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is running");
