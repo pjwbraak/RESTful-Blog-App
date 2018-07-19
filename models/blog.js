@@ -11,7 +11,13 @@ var blogSchema = new mongoose.Schema({
             ref: "User"
         },
         username: String
-    }
+    },
+    comments: [
+            {   
+                type: mongoose.Schema.Types.ObjectId, //this says that the comments property should be an array of comment IDs (a reference to comments)
+                ref: "Comment"
+            }
+        ]
 });
 
 module.exports = mongoose.model("Blog", blogSchema);

@@ -43,7 +43,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 //READ or SHOW - show a blog
 router.get("/:id", function(req, res){
-   Blog.findById(req.params.id, function(err, foundBlog){
+   Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
        if(err){
            console.log(err);
            res.redirect("/");

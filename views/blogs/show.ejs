@@ -16,6 +16,9 @@
             </div>
         </div>
         <br>
+        
+        <!--user options-->
+        
         <% if(currentUser && blog.author.id.equals(currentUser)){ %>
             <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
                 <a class="ui yellow button" href="/blogs/<%= blog._id %>/edit"><i class="icon edit"></i>Edit</a>
@@ -40,39 +43,50 @@
     </div>
     
     
+    <!--comment section-->
+    
     <div class="ui comments">
     <h3 class="ui dividing header">Comments</h3>
   
       <div class="actions">
+        <% if(currentUser){ %>
             <a class="reply active" id="addComment">Add new comment <i class="dropdown icon addComment"></i><i class="angle up icon addComment"></i></a>
           </div>
-          <form class="ui reply form" id="commentInput">
+          <form class="ui reply form" id="commentInput" action="/blogs/<%= blog._id %>/comments" method="POST">
             <div class="field">
-              <textarea></textarea>
+              <textarea name="comment[text]" type="text"></textarea>
+              <!--<input type="text" name="comment[text]" placeholder="text">-->
             </div>
-            <div class="ui primary submit labeled icon button">
-              <i class="icon edit"></i> Add Comment
-            </div>
+            <input class="ui floated primary button" type="submit" value="Add Comment">
           </form>
+        <% } else { %>
+          <span><a class="reply active" href="/login">Log in</a> to add a comment</span>
           <br>
-          
+        <% } %>
+      <br>
+      
+      <% if(blog.comments.length > 0){ %>
+      <% blog.comments.forEach(function(comment){ %>
       <div class="comment">
         <a class="avatar">
-          <img src="/images/avatar/small/matt.jpg">
+          <img src="">
         </a>
         <div class="content">
-          <a class="author">Matt</a>
+          <a class="author"><%= comment.author.username %></a>
           <div class="metadata">
             <span class="date">Today at 5:42PM</span>
           </div>
           <div class="text">
-            How artistic!
+            <%= comment.text %>
           </div>
           <div class="actions">
             <a class="reply">Reply</a>
           </div>
         </div>
       </div>
+      <% }); %>
+      <% } %>
+      
       <div class="comment">
         <a class="avatar">
           <img src="/images/avatar/small/elliot.jpg">
