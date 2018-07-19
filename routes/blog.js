@@ -1,6 +1,7 @@
 var express     = require("express"),
     router      = express.Router(),
     Blog        = require("../models/blog"),
+    User        = require("../models/user"),
     middleware  = require("../middleware");
 
 // INDEX ROUTE
@@ -43,14 +44,20 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 //READ or SHOW - show a blog
 router.get("/:id", function(req, res){
-   Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
-       if(err){
+    Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
+        if(err){
            console.log(err);
            res.redirect("/");
-       } else {
-           res.render("./blogs/show", {blog:foundBlog});
-       }
-   });
+        } else {
+           User.find({}, function(err, users){
+               if(err){
+                   console.log(err);
+               } else {
+                    res.render("./blogs/show", {blog:foundBlog, users:users});
+               }
+            });
+        }
+    });
 });
 
 //EDIT ROUTE -show form, retrieve info from particular blog post

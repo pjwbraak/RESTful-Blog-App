@@ -32,11 +32,11 @@
         <% } else { %>
             <form id="delete">
                 <div class="heightener">
-                <div class="extra heightener">
-                    <a class="ui secondary button" href="/blogs/">
-                        <i class="left chevron icon"></i>Go back
-                    </a>
-                </div>
+                  <div class="extra heightener">
+                      <a class="ui secondary button" href="/blogs/">
+                          <i class="left chevron icon"></i>Go back
+                      </a>
+                  </div>
                 </div>
             </form>
         <% } %>
@@ -55,7 +55,6 @@
           <form class="ui reply form" id="commentInput" action="/blogs/<%= blog._id %>/comments" method="POST">
             <div class="field">
               <textarea name="comment[text]" type="text"></textarea>
-              <!--<input type="text" name="comment[text]" placeholder="text">-->
             </div>
             <input class="ui floated primary button" type="submit" value="Add Comment">
           </form>
@@ -66,80 +65,36 @@
       <br>
       
       <% if(blog.comments.length > 0){ %>
-      <% blog.comments.forEach(function(comment){ %>
-      <div class="comment">
-        <a class="avatar">
-          <img src="">
-        </a>
-        <div class="content">
-          <a class="author"><%= comment.author.username %></a>
-          <div class="metadata">
-            <span class="date">Today at 5:42PM</span>
-          </div>
-          <div class="text">
-            <%= comment.text %>
-          </div>
-          <div class="actions">
-            <a class="reply">Reply</a>
-          </div>
-        </div>
-      </div>
-      <% }); %>
-      <% } %>
-      
-      <div class="comment">
-        <a class="avatar">
-          <img src="/images/avatar/small/elliot.jpg">
-        </a>
-        <div class="content">
-          <a class="author">Elliot Fu</a>
-          <div class="metadata">
-            <span class="date">Yesterday at 12:30AM</span>
-          </div>
-          <div class="text">
-            <p>This has been very useful for my research. Thanks as well!</p>
-          </div>
-          <div class="actions">
-            <a class="reply">Reply</a>
-          </div>
-        </div>
-        <div class="comments">
+        <% blog.comments.forEach(function(comment){ %>
           <div class="comment">
             <a class="avatar">
-              <img src="/images/avatar/small/jenny.jpg">
+
+            <% users.forEach(function(user){ %>
+              <% if(user._id.equals(comment.author.id)){ %>
+                <img src="<%= user.image %>">
+                <% return %>
+              <% }%>
+            <% }); %>
+              
             </a>
             <div class="content">
-              <a class="author">Jenny Hess</a>
+              <a class="author"><%= comment.author.username %></a>
               <div class="metadata">
-                <span class="date">Just now</span>
+                <span class="date"><%= comment.created.toDateString() %></span>
               </div>
               <div class="text">
-                Elliot you are always so right :)
+                <%= comment.text %>
               </div>
-              <div class="actions">
-                <a class="reply">Reply</a>
-              </div>
+              <!--<div class="actions">-->
+              <!--  <a class="reply">Reply</a>-->
+              <!--</div>-->
+              <br>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="comment">
-        <a class="avatar">
-          <img src="/images/avatar/small/joe.jpg">
-        </a>
-        <div class="content">
-          <a class="author">Joe Henderson</a>
-          <div class="metadata">
-            <span class="date">5 days ago</span>
-          </div>
-          <div class="text">
-            Dude, this is awesome. Thanks so much
-          </div>
-          <div class="actions">
-            <a class="reply">Reply</a>
-          </div>
-        </div>
-      </div>
+        <% }); %>
+      <% } %>
+      
     </div>
+  </div>
 
 <% include ../partials/footer %>
