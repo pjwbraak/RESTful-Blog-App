@@ -12,19 +12,19 @@ middlewareObj.checkBlogOwnership = function(req, res, next){
         Blog.findById(req.params.id, function(err, foundBlog){
             if(err){
                 req.flash("error", "Blog not found");
-                res.redirect("back");
+                res.redirect("/blogs");
             } else {
                 if(foundBlog.author.id.equals(req.user._id)){
                     next();
                 } else { 
                     req.flash("error", noPermissionText);
-                    res.redirect("back");
+                    res.redirect("/blogs");
                 }
             }
         });
     } else {
         req.flash("error", needToLoginText);
-        res.redirect("back");
+        res.redirect("/login");
     }
 };
 

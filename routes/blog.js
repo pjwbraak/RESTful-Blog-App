@@ -66,7 +66,7 @@ router.get("/:id", function(req, res){
 });
 
 //EDIT ROUTE -show form, retrieve info from particular blog post
-router.get("/:id/edit", function (req, res){
+router.get("/:id/edit", middleware.checkBlogOwnership, function (req, res){
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err){
             console.log(err);
@@ -79,13 +79,13 @@ router.get("/:id/edit", function (req, res){
 });
 
 //UPDATE ROUTE - update blog post to reflect the changes made to the blog post
-router.put("/:id", function(req, res){ //still needs to check if user is logged in and owns the blog!!
+router.put("/:id", middleware.checkBlogOwnership, function(req, res){
      req.body.blog.body = req.sanitize(req.body.blog.body);
      Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
         if(err){
             console.log(err);
             req.flash("error", "Blog not found");
-            res.redirect("/");
+            res.redirect("/blogs");
         } else {
             res.redirect("/blogs/" + req.params.id);
         }
