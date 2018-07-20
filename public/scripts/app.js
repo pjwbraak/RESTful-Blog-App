@@ -5,7 +5,9 @@ var fadeTime    = 400,
 $(document).ready(function(){
     
     setTimeout(function(){ $(".flashMessageWrapperSuccess").fadeOut(fadeTime); }, showTime);
+    
     $("#commentInput").slideUp(0);
+    
     $("#addComment").on("click", function(){
         $("#commentInput").slideToggle(slideSpeed, function(){
             if ($("#commentInput").is(':visible')){

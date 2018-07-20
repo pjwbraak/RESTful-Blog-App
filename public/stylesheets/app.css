@@ -32,6 +32,7 @@ i.icon {
 
 .postUsername {
     font-weight: bold;
+    color: rgba(0,0,0,.87);
 }
 
 .postDate {
@@ -99,8 +100,9 @@ i.icon {
     height: 100%;
 }
 
-#delete {
-    display: inline;
+#blogOptionsForm {
+    display: none;
+    float: right;
 }
 
 #signIn {
@@ -118,4 +120,9 @@ i.icon {
 
 #addComment {
     cursor: pointer;
+}
+
+#editBlog {
+    float: right;
+    font-size: 1rem;
 }

@@ -1,6 +1,8 @@
 <% include ../partials/header %>
 
 <div class="ui main text container segment">
+    
+    <!--blog-->
     <div class="ui huge header"><%= blog.title %></div>
     <div class="ui top attached">
         <div class="item">
@@ -10,6 +12,12 @@
                 <div>
                     <a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a>
                     <span class="postDate"> on <%= blog.created.toDateString() %></span>
+                    
+                    <!--edit option-->
+                    <% if(currentUser && blog.author.id.equals(currentUser)){ %>
+                    <span><a class="ui blue button" id="editBlog" href="/blogs/<%= blog._id %>/edit"><i class="icon edit"></i>Edit blog</a><span>
+                    <% } %>
+                    
                 </div>
                 <br>
                 <p><%- blog.body %></p> <!-- this will run/evaluate the code, see notes -->
@@ -17,34 +25,16 @@
         </div>
         <br>
         
-        <!--user options-->
-        
-        <% if(currentUser && blog.author.id.equals(currentUser)){ %>
-            <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-                <a class="ui yellow button" href="/blogs/<%= blog._id %>/edit"><i class="icon edit"></i>Edit</a>
-                <button class="ui red button">Delete</button>
-                <div class="extra">
-                    <a class="ui floated secondary button" href="/blogs/">
-                        <i class="left chevron icon"></i>Go back
-                    </a>
-                </div>
-            </form>
-        <% } else { %>
-            <form id="delete">
-                <div class="heightener">
-                  <div class="extra heightener">
-                      <a class="ui secondary button" href="/blogs/">
-                          <i class="left chevron icon"></i>Go back
-                      </a>
-                  </div>
-                </div>
-            </form>
-        <% } %>
-    </div>
-    
+    <!--back button-->
+        <div class="heightener">
+          <div class="extra heightener">
+              <a class="ui secondary button" href="/blogs/">
+                  <i class="left chevron icon"></i>Go back
+              </a>
+          </div>
+        </div>
     
     <!--comment section-->
-    
     <div class="ui comments">
     <h3 class="ui dividing header">Comments</h3>
   
@@ -75,10 +65,10 @@
                 <% return %>
               <% }%>
             <% }); %>
-              
+
             </a>
             <div class="content">
-              <a class="author"><%= comment.author.username %></a>
+              <a class="author" href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>
               <div class="metadata">
                 <span class="date"><%= comment.created.toDateString() %></span>
               </div>

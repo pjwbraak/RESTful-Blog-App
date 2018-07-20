@@ -35,6 +35,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     Blog.create(newBlog, function(err, newlyCreated){
         if(err){
             console.log(err);
+            req.flash("error", {"error": err.message});
+            res.redirect("/");
         } else {
             //then, redirect the index
             res.redirect("/blogs");
@@ -47,13 +49,16 @@ router.get("/:id", function(req, res){
     Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
         if(err){
            console.log(err);
+           req.flash("error", {"error": err.message});
            res.redirect("/");
         } else {
            User.find({}, function(err, users){
                if(err){
                    console.log(err);
+                   req.flash("error", {"error": err.message});
+                   res.redirect("/");
                } else {
-                    res.render("./blogs/show", {blog:foundBlog, users:users});
+                   res.render("./blogs/show", {blog:foundBlog, users:users});
                }
             });
         }
@@ -65,6 +70,7 @@ router.get("/:id/edit", function (req, res){
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err){
             console.log(err);
+            req.flash("error", {"error": err.message});
             res.redirect("/");
         } else {
             res.render("./blogs/edit", {blog:foundBlog});
@@ -73,11 +79,12 @@ router.get("/:id/edit", function (req, res){
 });
 
 //UPDATE ROUTE - update blog post to reflect the changes made to the blog post
-router.put("/:id", function(req, res){
+router.put("/:id", function(req, res){ //still needs to check if user is logged in and owns the blog!!
      req.body.blog.body = req.sanitize(req.body.blog.body);
      Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
         if(err){
             console.log(err);
+            req.flash("error", "Blog not found");
             res.redirect("/");
         } else {
             res.redirect("/blogs/" + req.params.id);
@@ -89,6 +96,7 @@ router.put("/:id", function(req, res){
 router.delete("/:id", middleware.checkBlogOwnership, function(req, res){
    Blog.findByIdAndRemove(req.params.id, function(err){
       if(err){
+          console.log(err);
           req.flash("error", "Blog not found");
           res.redirect("/blogs");
       } else {
