@@ -13,7 +13,7 @@
                     <a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a>
                     <span class="postDate"> on <%= blog.created.toDateString() %></span>
                     
-                    <!--edit button-->
+                    <!--edit blog button-->
                     <% if(currentUser && blog.author.id.equals(currentUser)){ %>
                     <span><a class="ui blue button" id="editBlog" href="/blogs/<%= blog._id %>/edit"><i class="icon edit"></i>Edit blog</a><span>
                     <% } %>
@@ -25,7 +25,7 @@
         </div>
         <br>
         
-    <!--back button-->
+        <!--back button-->
         <div class="heightener">
           <div class="extra heightener">
               <a class="ui secondary button" href="/blogs/">
@@ -62,9 +62,9 @@
 
             <% users.forEach(function(user){ %>
               <% if(user._id.equals(comment.author.id)){ %>
-                <img src="<%= user.image %>">
+                <img onerror="this.src='http://18cg.com/wp-content/uploads/2017/05/user-icon-27998.png'" src="<%= user.image %>">
                 <% return %>
-              <% }%>
+              <% } %>
             <% }); %>
 
             </a>
