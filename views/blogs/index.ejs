@@ -10,6 +10,7 @@
                 <div class="item">
                     <div class="image">
                         <img src="<%= blog.image %>">
+                        <div class="ui meta centered"><%= blog.comments.length %> comments</div>
                     </div>
                     <div class="content">
                         <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
