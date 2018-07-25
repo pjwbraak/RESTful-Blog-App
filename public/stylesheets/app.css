@@ -30,6 +30,10 @@ i.icon {
     text-align: right;
 }
 
+.authorOnIndex {
+    padding-top: .5em;
+}
+
 .postUsername {
     font-weight: bold;
     color: rgba(0,0,0,.87);
@@ -67,19 +71,19 @@ i.icon {
 /*menu logic for large and smaller screen sizes*/
 
 /*hide for bigger screens*/
-#headerMenuDropdown, #headerUserMenuDropdown {
+#headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
     display: none;
 }
 
 @media only screen and (max-width: 768px) {
     
     /*show for smaller screens*/
-    #headerMenuDropdown, #headerUserMenuDropdown {
+    #headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
         display: flex;
     }
     
     /*hide for smaller screens*/
-    #signIn, #register, #headerMenuBlog, #headerMenuNewBlog, #headerProjectName {
+    #signIn, #register, #headerMenuBlog, #headerMenuNewBlog, #headerProjectName, .forBigScreen {
         display: none;
     }
     

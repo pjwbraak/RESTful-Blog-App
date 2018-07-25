@@ -10,7 +10,10 @@
                 <div class="item">
                     <div class="image">
                         <img src="<%= blog.image %>">
-                        <div class="ui meta centered"><%= blog.comments.length %> comments</div>
+                        <div class="forBigScreen">
+                            <div class="authorOnIndex"><a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a></div>
+                            <div class="meta"><%= blog.comments.length %> comments</div>
+                        </div>
                     </div>
                     <div class="content">
                         <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
@@ -20,6 +23,7 @@
                         <div class="description">
                             <p><%- blog.body.substring(0, 100) %>...</p>
                         </div>
+                        <br class="forBigScreen">
                         <div class="extra">
                             <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">
                                 Read more

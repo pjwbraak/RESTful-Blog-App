@@ -1,6 +1,6 @@
 var fadeTime    = 400,
-    showTime    = 2500,
-    slideSpeed  = 400;
+    showTime    = 2200,
+    slideSpeed  = 200;
 
 $(document).ready(function(){
     

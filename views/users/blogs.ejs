@@ -10,6 +10,8 @@
                     <div class="item">
                         <div class="image">
                             <img src="<%= blog.image %>">
+                            <div class="authorOnIndex"><a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a></div>
+                            <div class="ui meta"><%= blog.comments.length %> comments</div>
                         </div>
                         <div class="content">
                             <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
