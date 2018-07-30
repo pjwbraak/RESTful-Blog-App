@@ -13,12 +13,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){ //isLoggedIn here wi
            req.flash("error", "Blog not found");
            res.redirect("/blogs");
         } else {
-            var text        = req.body.comment.text;
-            var author      = {
-                                id: req.user._id,
-                                username: req.user.username
-                              };
-            var newComment  = {text: text, author: author};
+            req.body.comment.text   = req.sanitize(req.body.comment.text);
+            var text                = req.body.comment.text;
+            var author              = {
+                                        id: req.user._id,
+                                        username: req.user.username
+                                        };
+            var newComment          = {text: text, author: author};
            //create new comment
            Comment.create(newComment, function(err, comment){
                if(err){
