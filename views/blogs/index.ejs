@@ -9,7 +9,7 @@
             <% blogs.forEach(function(blog){ %>
                 <div class="item">
                     <div class="image">
-                        <img src="<%= blog.image %>">
+                        <img onerror="this.src='https://cdn.shopify.com/s/files/1/1380/9193/t/3/assets/no-image.svg?2375582141201571545'" src="<%= blog.image %>">
                         <div class="forBigScreen">
                             <div class="authorOnIndex"><a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a></div>
                             <div class="meta"><%= blog.comments.length %> comments</div>
