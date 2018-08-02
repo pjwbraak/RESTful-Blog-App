@@ -68,6 +68,10 @@ i.icon {
     margin-bottom: 4.0em;
 }
 
+.ui.avatar.image {
+    border-radius: 10%;
+}
+
 /*menu logic for large and smaller screen sizes*/
 
 /*hide for bigger screens*/
@@ -116,10 +120,6 @@ i.icon {
 #navbar {
     height: 3.8em;
     padding-left: 5%;
-}
-
-#userIcon {
-    color: #2185d0;
 }
 
 #addComment {

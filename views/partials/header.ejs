@@ -54,7 +54,7 @@
                 <% } else { %>
                     <a>
                         <div class="ui simple dropdown item" id="userOptions">
-                            <i class="user icon" id="userIcon"></i>
+                            <img class="ui avatar image" onerror="this.src='http://18cg.com/wp-content/uploads/2017/05/user-icon-27998.png'" src="<%= currentUser.image %>">
                             <%=currentUser.username %>
                             <i class="dropdown icon"></i>
                     </a>
