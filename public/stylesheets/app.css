@@ -79,7 +79,7 @@ i.icon {
     display: none;
 }
 
-@media only screen and (max-width: 47em) {
+@media only screen and (max-width: 768px) {
     
     /*show for smaller screens*/
     #headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
