@@ -57,6 +57,11 @@ app.use("/blogs", blogRoutes);
 app.use("/blogs/:id/comments", commentRoutes);
 app.use("/users", userRoutes);
 
+//catch-all route for non-existing pages
+app.get("/*", function(req, res) {
+    req.flash("error", "That page does not exist");
+    res.redirect("/blogs");
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is running");

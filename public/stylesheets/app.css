@@ -72,27 +72,6 @@ i.icon {
     border-radius: 10%;
 }
 
-/*menu logic for large and smaller screen sizes*/
-
-/*hide for bigger screens*/
-#headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
-    display: none;
-}
-
-@media only screen and (max-width: 768px) {
-    
-    /*show for smaller screens*/
-    #headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
-        display: flex;
-    }
-    
-    /*hide for smaller screens*/
-    #signIn, #register, #headerMenuBlog, #headerMenuNewBlog, #headerProjectName, .forBigScreen {
-        display: none;
-    }
-    
-}
-
 #signOutIcon {
     color: #2185d0;
 }
@@ -129,6 +108,32 @@ i.icon {
 #editBlog {
     float: right;
     font-size: 1rem;
+}
+
+/*menu logic for large and smaller screen sizes*/
+
+/*hide for bigger screens*/
+#headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    #navbar, #loginMenu {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    /*show for smaller screens*/
+    #headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
+        display: flex;
+    }
+    
+    /*hide for smaller screens*/
+    #signIn, #register, #headerMenuBlog, #headerMenuNewBlog, #headerProjectName, .forBigScreen {
+        display: none;
+    }
+    
 }
 
 /*testing darker colors*/
