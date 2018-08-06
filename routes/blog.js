@@ -100,6 +100,7 @@ router.delete("/:id", middleware.checkBlogOwnership, function(req, res){
           req.flash("error", "Blog not found");
           res.redirect("/blogs");
       } else {
+          req.flash("success", "Blog was deleted");
           res.redirect("/blogs");
       }
    });

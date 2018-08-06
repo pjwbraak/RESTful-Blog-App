@@ -19,6 +19,12 @@ $(document).ready(function(){
             }
         });
     });
+    
+    $("#deleteBlogButton").on("click", function(){
+       $('.ui.modal')
+        .modal('show')
+        ;
+    });
 
 });
 
