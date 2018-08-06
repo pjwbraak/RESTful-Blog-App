@@ -10,8 +10,14 @@
                     <div class="item">
                         <div class="image">
                             <img onerror="this.src='https://cdn.shopify.com/s/files/1/1380/9193/t/3/assets/no-image.svg?2375582141201571545'" src="<%= blog.image %>">
-                            <div class="authorOnIndex"><a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a></div>
-                            <div class="ui meta"><%= blog.comments.length %> comments</div>
+                            <div class="forBigScreen">
+                                <div class="authorOnIndex"><a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a></div>
+                                <% if (blog.comments.length != 1) { %>
+                                    <div class="meta"><%= blog.comments.length %> comments</div>
+                                <% } else { %>
+                                    <div class="meta">1 comment</div>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="content">
                             <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
@@ -20,6 +26,16 @@
                             </div>
                             <div class="description">
                                 <p><%- blog.body.substring(0, 100) %>...</p>
+                            </div>
+                            <br class="forBigScreen">
+                            <div class="forSmallScreenBlock">
+                                <br>
+                                <div class="authorOnIndex"><a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a></div>
+                                    <% if (blog.comments.length != 1) { %>
+                                        <div class="meta"><%= blog.comments.length %> comments</div>
+                                    <% } else { %>
+                                        <div class="meta">1 comment</div>
+                                    <% } %>
                             </div>
                             <div class="extra">
                                 <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">

@@ -50,4 +50,15 @@ router.get("/logout", function(req, res){
     res.redirect("/blogs");
 });
 
+//TEST to send JSON to FrontEnd
+// router.get("/test", function(req, res) {
+//     User.find(function(err, users) {
+//         if(err){
+//             console.log(err);
+//         } else {
+//             res.json(users);
+//         }
+//     });
+// });
+
 module.exports = router;

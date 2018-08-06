@@ -2,7 +2,7 @@
 
 <div class="ui main text container segment">
     <div class="ui huge header"><h2 class="ui dividing header">Edit blog</h2></div>
-    <form class="ui form" action="/blogs/<%= blog._id %>?_method=PUT" method="POST"> <!-- method=PUT is method-override! HTML does (still) not support PUT etc so we have to do this -->
+    <form class="ui form" action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
         <div class="field">
             <label>Title</label>
             <input type="text" name="blog[title]" value="<%= blog.title %>">
@@ -16,15 +16,15 @@
             <textarea name="blog[body]"><%= blog.body %></textarea>
         </div>
         <input class="ui primary button" type="submit" value="Submit">
-        <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-            <!--<button class="ui red button"><i class="trash alternate icon"></i>Delete</button> not working yet-->
-            <div class="extra">
-            <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">
-                <i class="left chevron icon"></i>Go back
-            </a>
-        </div>
-        </form>
+        <div class="extra">
+        <a class="ui floated secondary button" href="/blogs/<%= blog._id %>">
+            <i class="left chevron icon"></i>Go back
+        </a>
+    </div>
     </form>
+    <!--<form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">-->
+    <!--    <button class="ui red button"><i class="trash alternate icon"></i>Delete</button>-->
+    <!--</form>-->
 </div>
 
 <br>

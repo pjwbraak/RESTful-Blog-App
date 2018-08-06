@@ -12,22 +12,20 @@
                 <div>
                     <a href="/users/<%= blog.author.id %>" class="postUsername"><%= blog.author.username %></a>
                     <span class="postDate"> on <%= blog.created.toDateString() %></span>
-                    
-                    <!--edit blog button-->
-                    <% if(currentUser && blog.author.id.equals(currentUser)){ %>
-                    <span><a class="ui blue button" id="editBlog" href="/blogs/<%= blog._id %>/edit"><i class="icon edit"></i>Edit blog</a><span>
-                    <% } %>
-                    
                 </div>
                 <br>
-                <p><%- blog.body %></p> <!-- this will run/evaluate the code, see notes -->
+                <p><%- blog.body %></p> <!-- this will run/evaluate the code -->
             </div>
         </div>
         <br>
         
-        <!--back button-->
         <div class="heightener">
+          <!--edit blog button-->
+              <% if(currentUser && blog.author.id.equals(currentUser)){ %>
+                <span><a class="ui blue button" id="editBlog" href="/blogs/<%= blog._id %>/edit"><i class="icon edit"></i>Edit blog</a><span>
+              <% } %>
           <div class="extra heightener">
+              <!--back button-->
               <a class="ui secondary button" href="/blogs/">
                   <i class="left chevron icon"></i>Go back
               </a>

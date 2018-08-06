@@ -51,26 +51,4 @@ router.get("/:id/blogs", function(req, res){
     });
 });
 
-// router.get("/:id/blogs", middleware.isLoggedIn, function(req, res){
-//     if(req.user._id.equals(req.params.id)){
-//       User.findById(req.params.id, function(err, foundUser){
-//             if(err){
-//               console.log(err);
-//               res.redirect("/");
-//             } else {
-//                 Blog.find({ "author.id": foundUser._id }, function(err, blogs){
-//                 if(err){
-//                     console.log(err);
-//                 } else {
-//                     res.render("./users/blogs", {user:foundUser, blogs: blogs});
-//                 }
-//             });
-//         }
-//     });
-//     } else { 
-//             req.flash("error", "No permission to access page");
-//             res.redirect("/blogs");
-//         }
-// });
-
 module.exports = router;

@@ -72,6 +72,10 @@ i.icon {
     border-radius: 10%;
 }
 
+div.forSmallScreenBlock {
+    float: left;
+}
+
 #signOutIcon {
     color: #2185d0;
 }
@@ -80,7 +84,7 @@ i.icon {
     position: absolute;
     right: 0;
     height: 100%;
-    padding-right: 5%;
+    /*padding-right: 5%;*/
 } 
 
 #userOptions {
@@ -98,7 +102,7 @@ i.icon {
 
 #navbar {
     height: 3.8em;
-    padding-left: 5%;
+    /*padding-left: 5%;*/
 }
 
 #addComment {
@@ -106,14 +110,13 @@ i.icon {
 }
 
 #editBlog {
-    float: right;
     font-size: 1rem;
 }
 
 /*menu logic for large and smaller screen sizes*/
 
 /*hide for bigger screens*/
-#headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
+#headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen, .forSmallScreenBlock {
     display: none;
 }
 
@@ -129,23 +132,13 @@ i.icon {
         display: flex;
     }
     
+    .forSmallScreenBlock {
+        display: block;
+    }
+    
     /*hide for smaller screens*/
     #signIn, #register, #headerMenuBlog, #headerMenuNewBlog, #headerProjectName, .forBigScreen {
         display: none;
     }
     
 }
-
-/*testing darker colors*/
-
-/*.ui.top.attached.segment {*/
-/*    background-color: #303030;*/
-/*}*/
-
-/*.ui.main.text.container.segment {*/
-/*    background-color: #303030;*/
-/*}*/
-
-/*body {*/
-/*    background-color: #282828;*/
-/*}*/

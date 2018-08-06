@@ -5,7 +5,7 @@ var express     = require("express"),
     middleware  = require("../middleware");
 
 //Comments Create
-router.post("/", middleware.isLoggedIn, function(req, res){ //isLoggedIn here will prevent anyone from adding a comment from e.g. Postman unless they are logged in.
+router.post("/", middleware.isLoggedIn, function(req, res){
    //look up blog using ID
    Blog.findById(req.params.id, function(err, blog){
        if(err){
@@ -27,15 +27,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){ //isLoggedIn here wi
                    req.flash("error", "Comment could not be added");
                    res.redirect("back");
                } else {
-                    //add username and id to comment
-                    // comment.author.id       = req.body.user._id;
-                    // comment.author.username = req.body.user.username;
                     //save comment
                     comment.save();
-                    //push comment into campground and connect new comment to campground (and save)
+                    //push comment into blog and connect new comment to blog (and save)
                     blog.comments.push(comment);
                     blog.save();
-                    //redirect to campground show page
+                    //redirect to blog show page
                     req.flash("success", "Comment added");
                     res.redirect("/blogs/" + blog._id);
                }

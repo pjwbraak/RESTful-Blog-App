@@ -8,10 +8,10 @@
             <div class="description">
                 <br>
                 <div>
-                    <span class="postUsername"><%= user.username %></span>
+                    <span class="postUsername"><%= user.created.toDateString() %></span>
                 </div>
                 <br>
-                <p><%- user.email %></p> <!-- this will run/evaluate the code, see notes -->
+                <p><%- user.email %></p> <!-- this will run/evaluate the code -->
             </div>
         </div>
         <br>
