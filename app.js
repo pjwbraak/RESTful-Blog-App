@@ -59,7 +59,6 @@ app.use("/users", userRoutes);
 
 //catch-all route for non-existing pages
 app.get("/*", function(req, res) {
-    req.flash("error", "That page does not exist");
     res.redirect("/blogs");
 });
 

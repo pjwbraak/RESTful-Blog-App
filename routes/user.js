@@ -23,14 +23,20 @@ router.get("/:id/private", middleware.isLoggedIn, function(req, res){
 
 //SHOW - show profile of user (public)
 router.get("/:id", function(req, res){
-       User.findById(req.params.id, function(err, foundUser){
-           if(err){
-               console.log(err);
-               res.redirect("/");
-           } else {
-               res.render("./users/show", {user:foundUser});
-           }
-       });
+   User.findById(req.params.id, function(err, foundUser){
+       if(err){
+           console.log(err);
+           res.redirect("/");
+       } else {
+           Blog.find({ "author.id": req.params.id }, function(err, blogs){
+               if(err){
+                   console.log(err);
+               } else {
+                   res.render("./users/show", {user:foundUser, blogs: blogs});
+               }
+            });
+        }
+   });
 });
 
 //show one user's posts

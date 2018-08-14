@@ -76,6 +76,10 @@ div.forSmallScreenBlock {
     float: left;
 }
 
+.floatLeft {
+    float: left;
+}
+
 #signOutIcon {
     color: #2185d0;
 }
