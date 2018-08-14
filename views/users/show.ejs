@@ -13,7 +13,7 @@
           </span>
         </div>
         <div class="description">
-            User description here
+            <%= user.description %>
         </div>
     </div>
     <div class="extra content">
@@ -27,7 +27,11 @@
         </a>
         <a>
           <i class="user icon"></i>
-          22 Friends
+          <% if(user.friends.length != 1){ %>
+              <%= user.friends.length %> Friends
+          <% } else {%>
+                1 Friend
+          <% } %>
         </a>
     </div>
 </div>

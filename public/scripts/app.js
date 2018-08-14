@@ -1,7 +1,7 @@
 var fadeTime    = 400,
     showTime    = 2200,
     slideSpeed  = 200;
-
+    
 $(document).ready(function(){
     
     setTimeout(function(){ $(".flashMessageWrapperSuccess").fadeOut(fadeTime); }, showTime);
