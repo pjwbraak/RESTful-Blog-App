@@ -25,6 +25,12 @@ $(document).ready(function(){
         .modal('show')
         ;
     });
+    
+    $("#addFriendButton").on("click", function(){
+       $('.ui.modal')
+        .modal('show')
+        ;
+    });
 
 });
 

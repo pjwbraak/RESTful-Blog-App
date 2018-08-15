@@ -57,4 +57,43 @@ router.get("/:id/blogs", function(req, res){
     });
 });
 
+//add follower
+router.post("/:id/followers", middleware.isLoggedIn, function(req, res){
+    User.findById(req.params.id, function(err, foundUser){
+            if(err){
+               console.log(err);
+               res.redirect("/");
+            } else {
+                User.findById(req.user.id, function(err, loggedInUser){
+                    if(err){
+                        console.log(err);
+                        res.redirect("/");
+                    } else {
+                        //make sure a user cannot follow oneself
+                        if(req.user._id.equals(req.params.id)){
+                            req.flash("error", "Cannot follow yourself");
+                            res.redirect("back");
+                        } else {
+                                //check if loggedInUser is already following foundUser
+                                if(foundUser.followers.indexOf(loggedInUser.id) == -1){
+                                    //add follower to foundUser
+                                    foundUser.followers.push(loggedInUser.id);
+                                    foundUser.save();
+                                    //add foundUser to following of loggedInUser
+                                    loggedInUser.following.push(foundUser.id);
+                                    loggedInUser.save();
+                                    //redirect back to foundUser page
+                                    req.flash("success", "User added to your following list");
+                                    res.redirect("back");
+                                } else {
+                                    req.flash("error", "You are already following this user");
+                                    res.redirect("back");
+                                }
+                        }
+                    }
+                });
+            }
+    });
+});
+
 module.exports = router;

@@ -8,12 +8,18 @@ var UserSchema = new mongoose.Schema({
     email:          String,
     image:          String,
     created:        {type: Date, default: Date.now},
-    friends:    [
-                    {   
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: "User"
-                    }
-                ]
+    followers:      [
+                        {   
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: "User"
+                        }
+                    ],
+    following:      [
+                        {   
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: "User"
+                        }
+                    ]
 });
 
 UserSchema.plugin(passportLocalMongoose);

@@ -1,5 +1,6 @@
 <% include ../partials/header %>
 
+<br>
 <div class="ui main text container card">
     <div class="image">
       <img onerror="this.src='https://cdn.shopify.com/s/files/1/1380/9193/t/3/assets/no-image.svg?2375582141201571545'" src="<%= user.image %>">
@@ -27,14 +28,59 @@
         </a>
         <a>
           <i class="user icon"></i>
-          <% if(user.friends.length != 1){ %>
-              <%= user.friends.length %> Friends
+          <% if(user.followers.length != 1){ %>
+              <%= user.followers.length %> Followers
           <% } else {%>
-                1 Friend
+                1 Follower
           <% } %>
         </a>
     </div>
+    <% if (currentUser){ %>
+        <% var hasFollower = user.followers.some(function (follower) { %>
+        <% return follower.equals(currentUser.id); %>
+        <% }); %>
+    <% } %>
+    <% if(currentUser && !hasFollower && !(user._id.equals(currentUser))){ %>
+    <a class="ui bottom attached button" id="addFriendButton"> <!-- shows the add friend modal -->
+      <i class="add icon"></i>
+      Start following
+    </a>
+    <% } else if(!currentUser){ %>
+    <a class="ui bottom attached button" href="/login">
+      <i class="add icon"></i>
+      Log in to follow
+    </a>
+    <% } %>
 </div>
+
+<!--modal for adding friend -->
+    <div class="ui modal">
+        <div class="header">
+          Start following
+        </div>
+        <div class="image content">
+            <div class="ui medium image">
+              <img onerror="this.src='https://cdn.shopify.com/s/files/1/1380/9193/t/3/assets/no-image.svg?2375582141201571545'" src="<%= user.image %>">
+            </div>
+            <div class="description">
+                <div class="ui header">Do you want to start following:</div>
+                <h3><%= user.username %></h3>
+                <p>You can stop following this user at any time.</p>
+            </div>
+        </div>
+        <div class="actions">
+            <form action="/users/<%= user._id %>/followers" method="POST">
+                <button class="ui blue button">
+                    <i class="add icon"></i>
+                    Follow
+                </button>
+                <a class="ui floated secondary button" href="">
+                    <i class="left chevron icon"></i>Go back
+                </a>
+            <br>
+            </form>
+        </div>
+    </div>
 
 <br>
 
