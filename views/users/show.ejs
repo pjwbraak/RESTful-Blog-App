@@ -26,7 +26,7 @@
                 1 Blog
           <% } %>
         </a>
-        <a>
+        <a href="/users/<%= user._id %>/followers">
           <i class="user icon"></i>
           <% if(user.followers.length != 1){ %>
               <%= user.followers.length %> Followers

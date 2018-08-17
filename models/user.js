@@ -20,8 +20,8 @@ var UserSchema = new mongoose.Schema({
                             ref: "User"
                         }
                     ]
-});
+},{collection: 'User'});
 
 UserSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema, 'User');

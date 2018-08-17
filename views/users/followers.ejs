@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+
+<div class="ui main text container">
+    
+    <% if(followers.length > 0){ %>
+    <div class="ui header centered"><h2><%= user.username %>'s followers</h2></div>
+    <div class="ui three column grid doubling centered">
+        <% followers.reverse(); %>
+        <% followers.forEach(function(follower){ %>
+          <div class="column">
+            <div class="ui fluid card">
+              <div class="image">
+                <img onerror="this.src='https://cdn.shopify.com/s/files/1/1380/9193/t/3/assets/no-image.svg?2375582141201571545'" src="<%= follower.image %>">
+              </div>
+              <div class="content">
+                <a class="header" href="/users/<%= follower._id %>"><%= follower.username %></a>
+              </div>
+            </div>
+          </div>
+         <% }); %>
+         
+    <% } else { %>
+    
+      <div class="ui top attached segment">
+        <div class="ui huge header"><h2 class="ui dividing header"><%= user.username %>'s followers</h2></div>
+        <p class=centered><%= user.username %> does not have any followers yet.</p>
+      </div>
+    
+    <% } %>
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>

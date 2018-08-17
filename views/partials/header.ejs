@@ -46,12 +46,12 @@
                     <a>
                         <div class="ui simple dropdown item" id="userOptions">
                             <img class="ui avatar image" onerror="this.src='http://18cg.com/wp-content/uploads/2017/05/user-icon-27998.png'" src="<%= currentUser.image %>">
-                            <%=currentUser.username %>
+                            <%= currentUser.username %>
                             <i class="dropdown icon"></i>
                     </a>
                             <div class="menu">
                               <a class="item" href="/users/<%=currentUser._id%>/blogs">My Blogs</a>
-                              <a class="item" href="/users/<%=currentUser._id%>/private">My Profile</a>
+                              <a class="item" href="/users/<%=currentUser._id%>">My Profile</a>
                               <div class="divider"></div>
                               <a href="/logout" class="item" href="#">Logout</a>
                             </div>
