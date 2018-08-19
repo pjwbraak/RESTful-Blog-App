@@ -1,6 +1,5 @@
 <% include ../partials/header %>
 
-<br>
 <div class="ui main text container card">
     <div class="image">
       <img onerror="this.src='https://cdn.shopify.com/s/files/1/1380/9193/t/3/assets/no-image.svg?2375582141201571545'" src="<%= user.image %>">
@@ -9,7 +8,7 @@
         <div class="header"><%= user.username %></div>
         <div class="meta">
           <span class="date">Joined on 
-          <%var created = user.created.toDateString()%>
+          <% var created = user.created.toDateString() %>
           <%= created %>
           </span>
         </div>
@@ -22,7 +21,7 @@
           <i class="pencil alternate icon"></i>
           <% if(blogs.length != 1){ %>
               <%= blogs.length %> Blogs
-          <% } else {%>
+          <% } else { %>
                 1 Blog
           <% } %>
         </a>
@@ -30,25 +29,30 @@
           <i class="user icon"></i>
           <% if(user.followers.length != 1){ %>
               <%= user.followers.length %> Followers
-          <% } else {%>
+          <% } else { %>
                 1 Follower
           <% } %>
         </a>
     </div>
-    <% if (currentUser){ %>
-        <% var hasFollower = user.followers.some(function (follower) { %>
-        <% return follower.equals(currentUser.id); %>
+    <% if(currentUser){ %>
+        <% var hasFollower = user.followers.some(function (follower){ %>
+        <% return follower.equals(currentUser._id); %>
         <% }); %>
     <% } %>
-    <% if(currentUser && !hasFollower && !(user._id.equals(currentUser))){ %>
+    <% if(!currentUser){ %>
+    <a class="ui bottom attached button" href="/login">
+      <i class="add icon"></i>
+      Log in to follow
+    </a>
+    <% } else if(!hasFollower && !(user._id.equals(currentUser._id))){ %>
     <a class="ui bottom attached button" id="addFriendButton"> <!-- shows the add friend modal -->
       <i class="add icon"></i>
       Start following
     </a>
-    <% } else if(!currentUser){ %>
-    <a class="ui bottom attached button" href="/login">
-      <i class="add icon"></i>
-      Log in to follow
+    <% } else if(currentUser._id.equals(user._id)){ %>
+    <a class="ui bottom attached button" href="/logout">
+      <i class="sign-out icon"></i>
+      Sign Out
     </a>
     <% } %>
 </div>

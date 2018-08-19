@@ -22,7 +22,7 @@ i.icon {
 }
 
 .container.main {
-    margin-top: 7.0em;
+    margin-top: 6.0em;
 }
 
 .extra {
@@ -47,7 +47,6 @@ i.icon {
 .flashMessageWrapper {
     position: absolute;
     top: 2.0em;
-    z-index: 1;
     width: 100%;
 }
 
@@ -84,13 +83,6 @@ div.forSmallScreenBlock {
     color: #2185d0;
 }
 
-#loginMenu {
-    position: absolute;
-    right: 0;
-    height: 100%;
-    /*padding-right: 5%;*/
-} 
-
 #userOptions {
     height: 100%;
 }
@@ -105,8 +97,13 @@ div.forSmallScreenBlock {
 }
 
 #navbar {
-    height: 3.8em;
-    /*padding-left: 5%;*/
+    padding-top: .2em;
+    padding-bottom: .2em;
+    z-index: 1;
+}
+
+.masthead .ui.menu .ui.button {
+    margin-left: .5em;
 }
 
 #addComment {
@@ -117,22 +114,32 @@ div.forSmallScreenBlock {
     font-size: 1rem;
 }
 
+.headerUserMenuItem {
+    margin-bottom: -.5em;
+    padding: 0;
+    height: 0;
+}
+
+#headerUserImage {
+    margin-right: .5em;
+}
+
 /*menu logic for large and smaller screen sizes*/
 
 /*hide for bigger screens*/
-#headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen, .forSmallScreenBlock {
+#headerMenuDropdown, .forSmallScreen, .forSmallScreenBlock {
     display: none;
 }
 
 @media only screen and (max-width: 768px) {
     
-    #navbar, #loginMenu {
-        padding-left: 0;
-        padding-right: 0;
-    }
+    /*#navbar, #loginMenu {*/
+    /*    padding-left: 0;*/
+    /*    padding-right: 0;*/
+    /*}*/
     
     /*show for smaller screens*/
-    #headerMenuDropdown, #headerUserMenuDropdown, .forSmallScreen {
+    #headerMenuDropdown, .forSmallScreen {
         display: flex;
     }
     
@@ -141,7 +148,7 @@ div.forSmallScreenBlock {
     }
     
     /*hide for smaller screens*/
-    #signIn, #register, #headerMenuBlog, #headerMenuNewBlog, #headerProjectName, .forBigScreen {
+    #headerMenuBlogs, #headerMenuNewBlog, .forBigScreen {
         display: none;
     }
     

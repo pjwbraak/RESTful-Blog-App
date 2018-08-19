@@ -13,53 +13,44 @@
         <script type="text/javascript" src="/scripts/app.js"></script>
     </head>
     <body>
-    <div class="ui fixed inverted menu" id="navbar">
-        <div class="ui container">
-          <a class="header item">
-            <i class="blogger icon"></i>
-            <span id="headerProjectName">Project Name</span>
-          </a>
-          <a href="/blogs" class="item" id="headerMenuBlog">Blogs</a>
-          <a href="/blogs/new" class="item" id="headerMenuNewBlog">New Blog</a>
-          <div class="ui simple dropdown item" id="headerMenuDropdown">
-            Menu <i class="dropdown icon"></i>
-            <div class="menu">
-              <a class="item" href="/blogs">Blogs</a>
-              <a class="item" href="/blogs/new">New Blog</a>
-            </div>
-          </div>
-        </div>
-        <div class="ui container">
-            <div class="ui inverted menu" id="loginMenu">
-                <% if(!currentUser){ %>
-                    <div class="ui simple dropdown item" id="headerUserMenuDropdown">
-                        <i class="user outline icon"></i> User <i class="dropdown icon"></i>
-                        <div class="menu">
-                          <a class="item" href="/login">Login</a>
-                          <a class="item" href="/register">Register</a>
-                        </div>
+        
+        <div class="ui inverted vertical masthead center aligned segment" id="navbar">
+        
+            <div class="ui container">
+              <div class="ui large secondary inverted pointing menu">
+                <a class="item">
+                  <i class="blogger icon"></i>
+                </a>
+                <div class="ui simple dropdown" id="headerMenuDropdown"> 
+                    <div class="item">
+                      <i class="sidebar icon"></i>
                     </div>
-                    <a href="/login" class="item" id="signIn">
-                    <i class="sign in alternate icon"></i>Login</a>
-                    <a href="/register" class="item" id="register">Register</a>
+                    <div class="menu">
+                        <a class="item" href="/blogs">Blogs</a> 
+                        <a class="item" href="/blogs/new">New Blog</a>
+                    </div>
+                </div>
+                <a class="active item" href="/blogs" id="headerMenuBlogs">Blogs</a>
+                <a class="item" href="/blogs/new" id="headerMenuNewBlog">New Blog</a>
+                <% if(!currentUser){ %>
+                <div class="right item">
+                  <a class="ui inverted button" href="/login">Login</a>
+                  <a class="ui inverted button" href="/signup">Sign Up</a>
+                </div>
                 <% } else { %>
-                    <a>
-                        <div class="ui simple dropdown item" id="userOptions">
-                            <img class="ui avatar image" onerror="this.src='http://18cg.com/wp-content/uploads/2017/05/user-icon-27998.png'" src="<%= currentUser.image %>">
-                            <%= currentUser.username %>
-                            <i class="dropdown icon"></i>
-                    </a>
-                            <div class="menu">
-                              <a class="item" href="/users/<%=currentUser._id%>/blogs">My Blogs</a>
-                              <a class="item" href="/users/<%=currentUser._id%>">My Profile</a>
-                              <div class="divider"></div>
-                              <a href="/logout" class="item" href="#">Logout</a>
-                            </div>
-                        </div>
-                  <% } %>
+                <div class="right simple dropdown item">
+                  <a class="item headerUserMenuItem" href="/users/<%= currentUser._id %>">
+                      <img class="ui avatar image" id="headerUserImage" img onerror="this.src='https://cdn.shopify.com/s/files/1/1380/9193/t/3/assets/no-image.svg?2375582141201571545'" src="<%= currentUser.image %>">
+                      <%= currentUser.username %>
+                  </a>
+                </div>
+                <% } %>
+                </div>
               </div>
+            </div>
+            
         </div>
-    </div>
+        
         <% if(error && error.length > 0){ %>
             <div class="flashMessageWrapper flashMessageWrapperError">
                 <div class="flashMessage ui container">

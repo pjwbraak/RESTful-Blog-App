@@ -7,20 +7,20 @@ router.get("/", function(req, res){
    res.render("landing");
 });
 
-//register form route
-router.get("/register", function(req, res){
-   res.render("register"); 
+//signup form route
+router.get("/signup", function(req, res){
+   res.render("signup"); 
 });
 
 //handle signup logic
-router.post("/register", function(req, res){
+router.post("/signup", function(req, res){
    var newUser = new User   ({  username: req.body.username,
                                 email: req.body.email,
                                 image: req.body.image
                             });
    User.register(newUser, req.body.password, function(err, user){
       if(err){
-           return res.render("register", {"error": err.message});
+           return res.render("signup", {"error": err.message});
       } else {
           passport.authenticate("local")(req, res, function(){
               req.flash("success", "Welcome " + user.username + ", your account was successfully registered!");
